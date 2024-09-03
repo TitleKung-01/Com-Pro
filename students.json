@@ -1,0 +1,16 @@
+{
+  "1122": {
+    "name": "meoww",
+    "score": 77,
+    "grade": "",
+    "money": 499,
+    "purchasedItems": { "Notebook": 4, "Pen": 8 }
+  },
+  "123": {
+    "name": "tle",
+    "score": 22,
+    "grade": "",
+    "money": 3444,
+    "purchasedItems": {}
+  }
+}
