@@ -25,25 +25,25 @@ type PetShop struct {
 
 // AddProduct เป็นฟังก์ชันที่ใช้เพิ่มสินค้าลงในร้านค้า
 func (s *PetShop) AddProduct(p Product) {
-	s.products = append(s.products, p)
+	s.products = append(s.products, p) // เพิ่มสินค้าลงในร้านค้า
 	fmt.Println("Product added:", p.Name)
 }
 
 // ListProducts แสดงรายการสินค้าทั้งหมดในร้านค้า
 func (s *PetShop) ListProducts() {
 	fmt.Println("Available Products:")
-	for _, p := range s.products {
+	for _, p := range s.products { // วนลูปเพื่อแสดงรายการสินค้าทั้งหมด
 		fmt.Printf("ID: %d, Name: %s, Price: %.2f\n", p.ID, p.Name, p.Price)
 	}
 }
 
 // BuyProduct เป็นฟังก์ชันที่ใช้ซื้อสินค้าจากร้านค้า
-func (s *PetShop) BuyProduct(id int) {
-	for i, p := range s.products {
-		if p.ID == id {
-			fmt.Printf("You bought: %s for %.2f\n", p.Name, p.Price)
+func (s *PetShop) BuyProduct(id int) { 
+	for i, p := range s.products { // วนลูปเพื่อหาสินค้าที่ต้องการซื้อ
+		if p.ID == id { // หาสินค้าที่ตรงกับ ID ที่ระบุ
+			fmt.Printf("You bought: %s for %.2f\n", p.Name, p.Price) // แสดงสินค้าที่ซื้อ
 			// ลบสินค้าที่ซื้อออกจากรายการ
-			s.products = append(s.products[:i], s.products[i+1:]...)
+			s.products = append(s.products[:i], s.products[i+1:]...) // ลบสินค้าที่ซื้อออกจากรายการ
 			return
 		}
 	}
@@ -61,7 +61,7 @@ func operateShop(shop Shop) {
 
 	// ซื้อสินค้า
 	shop.BuyProduct(3)
-	// shop.BuyProduct(4)
+	shop.BuyProduct(4)
 
 	// แสดงรายการสินค้าหลังจากซื้อแล้ว
 	shop.ListProducts()
@@ -69,8 +69,8 @@ func operateShop(shop Shop) {
 
 func main() {
 	// สร้างร้านค้าใหม่
-	var myShop Shop = &PetShop{}
+	var myShop Shop = &PetShop{} // สร้างร้านค้าใหม่
 
 	// ใช้งานร้านค้าผ่านอินเตอร์เฟซ
-	operateShop(myShop)
+	operateShop(myShop) // ผลลัพธ์จะแสดงรายการสินค้าที่เพิ่ม และรายการสินค้าหลังจากซื้อ
 }
